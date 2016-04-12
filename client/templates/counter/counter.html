@@ -1,0 +1,125 @@
+<template name="counter">
+	<div class="post">
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-12">彩票的投注额 *</label>
+			<div class="controls col-md-12">
+				<input name="cost" type="number" min="2" placeholder="默认单位是RMB" class="form-control cost"/>
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-12">彩票的最终奖金额 *</label>
+			<div class="controls col-md-12">
+				<input name="winPrice" type="number" min="2" placeholder="默认单位是RMB" class="form-control winPrice"/>
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="control-label col-md-12">选择未确定场次 *</label>
+			<div class="controls col-md-12">
+				<select class="form-control matchSelect" name="matchCount">
+				<option value="1" selected>1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				</select>
+				<a class="btn btn-default CheckMatch" href="#">确定</a>
+			</div>	
+	    </div>
+		<div class="form-group col-md-12 one-match">
+		<hr>
+		<label class="control-label col-md-12">场次 1</label>
+		<div class="controls col-md-12">
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check1"> 胜
+				<input type="text" class="form-control match1" />
+			</label>
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check2"> 平
+				<input type="text" class="form-control match2" />
+			</label>
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check3"> 负
+				<input type="text" class="form-control match3" />
+			</label>
+		</div>
+	</div>
+	<div class="form-group col-md-12 two-match">
+		<hr>
+		<label class="control-label col-md-12">场次 2</label>
+		<div class="controls col-md-12">
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check4"> 胜
+				<input type="text" class="form-control match4" />
+			</label>
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check5"> 平
+				<input type="text" class="form-control match5" />
+			</label>
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check6"> 负
+				<input type="text" class="form-control match6" />
+			</label>
+		</div>
+	</div>
+	<div class="form-group col-md-12 three-match">
+		<hr>
+		<label class="control-label col-md-12">场次 3</label>
+		<div class="controls col-md-12">
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check7"> 胜
+				<input type="text" class="form-control match7" />
+			</label>
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check8"> 平
+				<input type="text" class="form-control match8" />
+			</label>
+			<label class="checkbox-inline col-md-3">
+				<input type="checkbox" class="check9"> 负
+				<input type="text" class="form-control match9" />
+			</label>
+		</div>
+	</div>
+	<div class="form-group col-md-12 notify-message">
+		<hr>
+		<label class="control-label col-md-12">提示 :</label>
+		<div class="controls col-md-12">
+			<p class="no-winPrice">请输入奖金额</p>
+			<p class="no-cost">请输入投注额</p>
+			<p class="miss-matchparam">请填写好赔率在进行评估</p>
+	    </div>		
+    </div>		
+	<div class="form-group col-md-12">
+				<hr>
+				<a class="btn btn-default ticketValue" href="#">评估彩票价值</a>
+				<a class="btn btn-danger clearAll" href="#">清零</a>
+	</div>
+	<div class="form-group col-md-12 result-message">
+		<hr>
+		<label class="control-label col-md-12">分析 :</label>
+		<div class="controls col-md-12">
+			<span>你的彩票当前价值为:<p class="ticketCountResult">62000</p></span>
+			<span>购买方案为：<p class="ticketCountMethod"></p>
+			 场次1 赢 场次2 平  16666 
+			 场次1 赢 场次2 负  12000
+			 场次1 平 场次2 赢  16666
+			 场次1 平 场次2 平  11111
+			 场次1 平 场次2 负  8333
+			 场次1 负 场次2 赢  12500
+			 场次1 负 场次2 平  8333
+			 场次1 负 场次2 负  6250
+			</span>
+	    </div>		
+    </div>
+	<div class="form-group col-md-12 fail-message">
+		<hr>
+		<label class="control-label col-md-12">抱歉 :</label>
+		<div class="controls col-md-12">
+			<span>你的彩票目前没有价值:
+				<p>
+				你可以：
+				 1.等待下一场胜利再来计算.
+				 2.检查是否赔率填写有误.
+			   </p>
+			</span>
+	    </div>	
+    </div>
+	</div>
+</template>

@@ -14,6 +14,17 @@ Template.postItem.helpers({
     } else {
       return 'disabled';
     }
+  },
+  ticketInfo: function(id) {
+    var ticketsObject = Tickets.find({_id: id}).fetch();
+    if(ticketsObject.length == 0){
+      return 
+    }
+    var ticketsGenerate = 
+    "奖金:"+ticketsObject[0].winPrice+" "+
+    "还剩:"+ticketsObject[0].restMatch+"场"+" "+
+    "仅剩:"+ticketsObject[0].deadline+"天"
+    return ticketsGenerate;
   }
 });
 

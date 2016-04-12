@@ -20,3 +20,8 @@ Meteor.publish('comments', function(postId) {
 Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
+
+Meteor.publish('tickets', function(userId){
+  // check(userId, String);
+  return Tickets.find();
+});

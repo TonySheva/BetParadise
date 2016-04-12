@@ -1,0 +1,52 @@
+<template name="ticketEdit">
+  <form class="main form page">
+    <div class="form-group {{errorClass 'ticketName'}}">
+      <label class="control-label" for="ticketName">名称 *</label>
+      <div class="controls">
+        <input name="ticketName" id="ticketName" type="text" value="{{ticketName}}" placeholder="起个你喜欢的名字呗" class="form-control"
+        />
+        <span class="help-block">{{errorMessage 'ticketName'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'cost'}}">
+      <label class="control-label" for="cost">彩票的投注额 *</label>
+      <div class="controls">
+        <input name="cost" id="cost" type="number" min="2" value="{{cost}}" placeholder="默认单位是RMB" class="form-control" />
+        <span class="help-block">{{errorMessage 'cost'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'winPrice'}}">
+      <label class="control-label" for="winPrice">彩票的最终奖金额 *</label>
+      <div class="controls">
+        <input name="winPrice" id="winPrice" type="number" min="1" value="{{winPrice}}" placeholder="默认单位是RMB" class="form-control"
+        />
+        <span class="help-block">{{errorMessage 'winPrice'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'winMatch'}}">
+      <label class="control-label" for="winMatch">已经获胜的场次 *</label>
+      <div class="controls">
+        <input name="winMatch" id="winMatch" type="number" min="1" value="{{winMatch}}" class="form-control" />
+        <span class="help-block">{{errorMessage 'winMatch'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'restMatch'}}">
+      <label class="control-label" for="restMatch">彩票的剩余场次 *</label>
+      <div class="controls">
+        <input name="restMatch" id="restMatch" type="number" min="1" max="3" value="{{restMatch}}" placeholder="若大于等于4则视为无效" class="form-control"
+        />
+        <span class="help-block">{{errorMessage 'restMatch'}}</span>
+      </div>
+    </div>
+    <div class="form-group {{errorClass 'deadline'}}">
+      <label class="control-label" for="deadline">彩票有效日期 *</label>
+      <div class="controls">
+        <input name="deadline" id="deadline" type="number" min="1" value="{{deadline}}" class="form-control" />
+        <span class="help-block">{{errorMessage 'deadline'}}</span>
+      </div>
+    </div>
+    <input type="submit" value="提交" class="btn btn-primary submit" />
+    <hr/>
+    <a class="btn btn-danger delete" href="#">删除</a>
+  </form>
+</template>

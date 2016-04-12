@@ -1,0 +1,27 @@
+<template name="ticketsList">
+  <div class="post">
+  <span><strong><a href="/tickets/submit">新建票儿</a></strong></span>
+  </div>
+  <div class="post">
+    <div class="post-content">
+      {{#if ticketsItem}}
+      {{#each ticketsItem}}
+      {{> ticketItem this}}
+      {{/each}}
+      {{else}}
+      <span>你还没有票儿记录，<strong><a href="/tickets/submit">新建</a></strong>一个吧</span>
+      {{/if}}
+    </div>
+  </div>
+</template>
+<template name="ticketItem">
+<h3>
+  <span>名称:<span style="color:red"><strong>{{ticketName}}</strong></span></span>
+  <span>奖金:<span style="color:red"><strong>{{winPrice}}</strong></span></span>
+  <span>还剩：<span style="color:red"><strong>{{restMatch}}</strong></span>场</span>
+  <span>仅剩：<span style="color:red"><strong>{{deadline}}</strong></span>天</span> 
+  <span><a href="/tickets/{{_id}}/edit">编辑</a></span> 
+</h3>
+<hr>
+</template>      
+      

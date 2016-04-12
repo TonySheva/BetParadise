@@ -8,7 +8,11 @@ Template.postSubmit.helpers({
   },
   errorClass: function (field) {
     return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
-  }
+  },
+  ticketsItem: function(){
+    console.log(Tickets.find({userId: Meteor.userId()}).fetch())
+    return Tickets.find({userId: Meteor.userId()}).fetch();
+  },
 });
 
 Template.postSubmit.events({
@@ -17,11 +21,12 @@ Template.postSubmit.events({
     
     var post = {
       url: $(e.target).find('[name=url]').val(),
-      title: $(e.target).find('[name=title]').val()
+      title: $(e.target).find('[name=title]').val(),
+      ticketId: $(e.target).find('[name=ticketId]').val(),
     };
-    
+    //console.log(post);
     var errors = validatePost(post);
-    if (errors.title || errors.url)
+    if (errors.title || errors.url || errors.ticketId)
       return Session.set('postSubmitErrors', errors);
     
     Meteor.call('postInsert', post, function(error, result) {
@@ -35,5 +40,15 @@ Template.postSubmit.events({
       
       Router.go('postPage', {_id: result._id});  
     });
+  },
+  'click .search': function(e) {
+    e.preventDefault();
+    var tId = $(".ticketSelect").val();
+    var searchId = $(".ticket-unviewed[data-search="+tId+"]").data("search");
+    var ticketLength= $(".ticket-unviewed").length;
+    for(i=0; i<ticketLength; i++){
+      $(".ticket-unviewed").eq(i).hide();
+    }
+     $(".ticket-unviewed[data-search="+tId+"]").show(); 
   }
 });

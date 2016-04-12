@@ -1,21 +1,54 @@
 <template name="postEdit">
   <form class="main form page">
     <div class="form-group {{errorClass 'url'}}">
-      <label class="control-label" for="url">URL</label>
+      <label class="control-label" for="url">交易详情链接 *</label>
       <div class="controls">
-          <input name="url" id="url" type="text" value="{{url}}" placeholder="Your URL" class="form-control"/>
-          <span class="help-block">{{errorMessage 'url'}}</span>
+        <input name="url" id="url" type="text" value="{{url}}" placeholder="例如：//2.taobao.com/item.htm?id=528309397473" class="form-control"
+        />
+        <span class="help-block">{{errorMessage 'url'}}</span>
       </div>
     </div>
     <div class="form-group {{errorClass 'title'}}">
-      <label class="control-label" for="title">Title</label>
+      <label class="control-label" for="title">引人入胜的标题 *</label>
       <div class="controls">
-          <input name="title" id="title" type="text" value="{{title}}" placeholder="Name your post" class="form-control"/>
-          <span class="help-block">{{errorMessage 'title'}}</span>
+        <input name="title" id="title" type="text" value="{{title}}" placeholder="例如：剩下决赛没开！！总额8.8万，有钱大家赚~" class="form-control"
+        />
+        <span class="help-block">{{errorMessage 'title'}}</span>
       </div>
     </div>
-    <input type="submit" value="Submit" class="btn btn-primary submit"/>
+    <div class="form-group {{errorClass 'ticketId'}}">
+      <label class="control-label" for="ticketId">选择你的票儿 *</label>
+      <select class="form-control ticketSelect" name="ticketId">
+        {{#each ticketsItem}} 
+        {{> selectOption this}}
+        {{/each}}
+      </select>
+      {{#each ticketsItem}}
+      {{> selectDetail this}}
+      {{/each}}
+      <a class="btn btn-default search" href="#">导入票儿信息</a>
+      <span class="help-block">{{errorMessage 'ticketId'}}</span>
+    </div>
+    <input type="submit" value="提交" class="btn btn-primary submit" />
     <hr/>
-    <a class="btn btn-danger delete" href="#">Delete post</a>
+    <a class="btn btn-danger delete" href="#">删除</a>
   </form>
 </template>
+
+<template name="selectOption">
+  {{#if ticketSelectDefault _id}}
+  <option value="{{_id}}" selected>{{ticketName}}</option>
+  {{else}}
+  <option value="{{_id}}">{{ticketName}}</option>
+  {{/if}}
+</template>
+
+<template name="selectDetail">
+    <div class="ticket-unviewed" data-search="{{_id}}">
+    <p>彩票的投注额:{{cost}}</p>
+    <p>彩票的最终奖金额:{{winPrice}}</p>
+    <p>已经获胜的场次:{{winMatch}}</p>
+    <p>彩票的剩余场次:{{restMatch}}</p>
+    <p>彩票有效日期:{{deadline}}</p>
+    </div>
+</template>  

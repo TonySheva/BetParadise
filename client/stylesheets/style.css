@@ -69,9 +69,11 @@ body {
         font-weight: normal;
         font-size: 14px;
         display: inline-block;
-        color: #aaaaaa; }
+        color: #aaaaaa; 
+        padding-left:5px;
+        }
     .post .post-content p {
-      margin: 0; }
+      margin: 0; } 
   .post .discuss {
     display: block;
     float: right;
@@ -116,12 +118,25 @@ body {
   height: 100px;
 }
 
+.ticket-unviewed {
+  display: none;  
+}
+
 .jumbotron{
   text-align: center;
 }
 .jumbotron h2{
   font-size: 60px;
   font-weight: 100;
+}
+
+.one-match, .two-match, .three-match, .notify-message, .result-message, .fail-message{
+  display: none;
+}
+
+.no-match, .miss-matchparam{
+  display: none;
+  color:red;
 }
 
 @-webkit-keyframes fadeOut {
