@@ -86,6 +86,7 @@ Template.counter.events({
     if(!winPrice){
        $(".notify-message").show();
        $(".no-winPrice").show();
+        $(".result-message").hide();
        return 
     }else{
       $(".no-winPrice").hide(); 
@@ -95,20 +96,21 @@ Template.counter.events({
     if(!cost){
       $(".notify-message").show();
       $(".no-cost").show();
+        $(".result-message").hide();
       return
     }else{
       $(".notify-message").hide();
       $(".no-cost").hide();
+
     }
     
     if(cost > winPrice/2){
-      console.log("asdadsad");
         $(".fail-message").show();
+        $(".result-message").hide();
         return
     }else{
       $(".fail-message").hide();
     }
-  
     // match 1
     if(matchCount == 1) {
     Setmatcharr(1);
@@ -192,7 +194,20 @@ Template.counter.events({
      JudgeValue(optimumarr);
      SessionSetDate(optimumarr);
   }
-
+  if(optimumarr.length> 0){
+      var checkCount = 0;
+      for(var i=0; i< optimumarr.length; i++){
+          checkCount = checkCount + optimumarr[i].value;
+      }
+      console.log(checkCount);
+      if(checkCount < winPrice){
+          $(".result-message").show();
+          $(".fail-message").hide();
+      }else {
+          $(".result-message").hide();
+          $(".fail-message").show();
+      }
+  }
   },
   'click .clearAll': function() {
     var matchCount = $(".matchSelect").val();

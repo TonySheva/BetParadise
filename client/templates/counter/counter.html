@@ -95,18 +95,15 @@
 		<hr>
 		<label class="control-label col-md-12">分析 :</label>
 		<div class="controls col-md-12">
-			<span>你的彩票当前价值为:<p class="ticketCountResult">62000</p></span>
-			<span>购买方案为：<p class="ticketCountMethod"></p>
-			 场次1 赢 场次2 平  16666 
-			 场次1 赢 场次2 负  12000
-			 场次1 平 场次2 赢  16666
-			 场次1 平 场次2 平  11111
-			 场次1 平 场次2 负  8333
-			 场次1 负 场次2 赢  12500
-			 场次1 负 场次2 平  8333
-			 场次1 负 场次2 负  6250
-			</span>
-	    </div>		
+            {{#if optimumArr}}
+            {{#each optimumArr}}
+            <span>购买场次{{key}} 金额为：{{value}}</span><br/>
+            <span>此投注的奖金为：{{nowValue}}</span><br/>
+            {{/each}}
+            {{else}}
+            <p>nothing</p>
+            {{/if}}
+        </div>
     </div>
 	<div class="form-group col-md-12 fail-message">
 		<hr>
@@ -123,3 +120,4 @@
     </div>
 	</div>
 </template>
+
