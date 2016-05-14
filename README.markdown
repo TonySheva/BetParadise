@@ -4,9 +4,11 @@ BetParadise is a simple bet news app that lets you share bet-experience, links, 
 
 It was built with [Meteor](http://meteor.com) 
 
-### TO Start
+### To Start
 
 1.git clone it
 
-2.Meteor 
+2.Meteor
+
+3.It will not be improved temporarily
 
